@@ -3,9 +3,19 @@
 
 using namespace std;
 
+struct GuessResult
+{
+	bool solved;
+	int strikes;
+	int balls;
+};
+
 class Baseball
 {
 public:
+	explicit Baseball(const char* question) : question(question)
+	{
+	}
 	bool isDuplicatedNumber(const std::string& guessNumber)
 	{
 		return guessNumber[0] == guessNumber[1] ||
@@ -31,8 +41,11 @@ public:
 		}
 	}
 
-	void guess(const std::string& guessNumber)
+	GuessResult guess(const std::string& guessNumber)
 	{
 		assertIllegalArgument(guessNumber);
+		return { true, 3, 0 };
 	}
+private:
+	string question;
 };
