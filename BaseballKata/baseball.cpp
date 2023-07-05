@@ -8,6 +8,7 @@ class Baseball
 public:
 	void guess(const std::string& string)
 	{
-		throw length_error("Must be tree letters");
+		if (string.length() != 3)
+			throw length_error("Must be tree letters");
 	}
 };
