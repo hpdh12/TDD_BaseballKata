@@ -6,12 +6,12 @@ using namespace std;
 class Baseball
 {
 public:
-	void guess(const std::string& string)
+	void guess(const std::string& guessNumber)
 	{
-		if (string.length() != 3)
+		if (guessNumber.length() != 3)
 			throw length_error("Must be tree letters");
 
-		for (char ch : string)
+		for (char ch : guessNumber)
 		{
 			if (ch < '0' || ch > '9')
 			{
