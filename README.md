@@ -1,3 +1,3 @@
 ### Baseball KATA
 ---
-TDD
+baseball KATA by TDD
