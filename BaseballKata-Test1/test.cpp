@@ -48,3 +48,16 @@ TEST_F(BaseballFixture, Return2strikes)
 		EXPECT_EQ(0, result.balls);
 	}
 }
+
+TEST_F(BaseballFixture, Return1strikesAnd2Balls)
+{
+	vector<string> questions = { "213", "132", "321" };
+
+	for (auto question : questions) {
+		GuessResult result = game.guess(question);
+
+		EXPECT_FALSE(result.solved);
+		EXPECT_EQ(1, result.strikes);
+		EXPECT_EQ(2, result.balls);
+	}
+}
