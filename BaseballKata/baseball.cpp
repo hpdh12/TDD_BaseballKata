@@ -41,6 +41,41 @@ public:
 		}
 	}
 
+	int getNumStrike(const std::string& guessNumber)
+	{
+		int numStrike = 0;
+
+		for (int i = 0; i < guessNumber.size(); i++)
+		{
+			if (guessNumber[i] == question[i])
+			{
+				numStrike++;
+			}
+		}
+		return numStrike;
+	}
+
+	int getNumBall(const std::string& guessNumber)
+	{
+		int numBall = 0;
+
+		for (int i = 0; i < guessNumber.size(); i++)
+		{
+			for (int j = 0; j < question.size(); j++)
+			{
+				if (i == j)
+					continue;
+
+				if (guessNumber[i] == question[j])
+				{
+					numBall++;
+					break;
+				}
+			}
+		}
+		return numBall;
+	}
+
 	GuessResult guess(const std::string& guessNumber)
 	{
 		assertIllegalArgument(guessNumber);
@@ -48,25 +83,7 @@ public:
 			return { true, 3, 0 };
 		}
 
-		int numStrike = 0;
-		int numBall = 0;
-		for (int i = 0; i < guessNumber.size(); i++)
-		{
-			for (int j = 0; j < question.size(); j++)
-			{
-				if (guessNumber[i] == question[j])
-				{
-					if (i == j)
-						numStrike++;
-					else
-						numBall++;
-
-					break;
-				}
-			}
-		}
-
-		return { false, numStrike, numBall };
+		return { false, (getNumStrike(guessNumber)), (getNumBall(guessNumber)) };
 	}
 private:
 	string question;

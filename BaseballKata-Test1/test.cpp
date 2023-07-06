@@ -38,21 +38,13 @@ TEST_F(BaseballFixture, ReturnSolvedResultIfMatchedNumber)
 
 TEST_F(BaseballFixture, Return2strikes)
 {
-	GuessResult result = game.guess("124");
+	vector<string> questions = { "124", "143", "423" };
 
-	EXPECT_FALSE(result.solved);
-	EXPECT_EQ(2, result.strikes);
-	EXPECT_EQ(0, result.balls);
+	for (auto question : questions) {
+		GuessResult result = game.guess(question);
 
-	result = game.guess("143");
-
-	EXPECT_FALSE(result.solved);
-	EXPECT_EQ(2, result.strikes);
-	EXPECT_EQ(0, result.balls);
-
-	result = game.guess("423");
-
-	EXPECT_FALSE(result.solved);
-	EXPECT_EQ(2, result.strikes);
-	EXPECT_EQ(0, result.balls);
+		EXPECT_FALSE(result.solved);
+		EXPECT_EQ(2, result.strikes);
+		EXPECT_EQ(0, result.balls);
+	}
 }
