@@ -48,7 +48,25 @@ public:
 			return { true, 3, 0 };
 		}
 
-		return { false, 0, 0 };
+		int numStrike = 0;
+		int numBall = 0;
+		for (int i = 0; i < guessNumber.size(); i++)
+		{
+			for (int j = 0; j < question.size(); j++)
+			{
+				if (guessNumber[i] == question[j])
+				{
+					if (i == j)
+						numStrike++;
+					else
+						numBall++;
+
+					break;
+				}
+			}
+		}
+
+		return { false, numStrike, numBall };
 	}
 private:
 	string question;
